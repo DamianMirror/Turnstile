@@ -11,7 +11,7 @@ namespace ConsoleApp1
             
             Turnstile turnstile1 = new Turnstile(Status.Customer, PassTypes.Temporary, 2);
             Turnstile turnstile2 = new Turnstile(Status.Worker, PassTypes.Permanent, 4);
-            //Turnstile turnstile3 = new Turnstile(Status.Worker, PassTypes.Any, 1);
+            Turnstile turnstile3 = new Turnstile(Status.Worker, PassTypes.Any, 1);
             
             turnstile1.PassThrough(pass1, GateAction.Enter);
             turnstile1.PassThrough(pass2, GateAction.Enter);
