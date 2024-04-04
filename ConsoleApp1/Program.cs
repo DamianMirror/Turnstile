@@ -29,6 +29,7 @@ namespace ConsoleApp1
             turnstile2.PrintNotAllowedPasses();
             
             turnstile1.PrintPasses();
+            turnstile1.PrintPasses(GateAction.Enter);
         }
     }
 }

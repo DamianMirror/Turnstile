@@ -13,7 +13,7 @@ namespace ConsoleApp1
 		
 		public int countTotalPeopleInside = 0;
 		public int countTotalNotAllowedPasses = 0;
-		public List<TurnstileLogInfo> Logs = new();
+		public DoublyLinkedList Logs = new();
 		
 		public Turnstile(Status type, PassTypes passTypeNeeded, int securityLevel = 1)
 		{
@@ -108,46 +108,12 @@ namespace ConsoleApp1
 
 		public void PrintPasses()
 		{
-			int countPasses = 1;
-			for(int i = 0; i < Logs.Count; i++)
-			{
-				if(Logs[i].Action == GateAction.Enter)
-				{
-					Console.WriteLine(i + ". " + Logs[i].GetPassName() + " comes inside at " + Logs[i].Time);
-					countPasses++;
-					
-				}
-				if(Logs.ElementAt(i).Action == GateAction.Exit)
-				{
-					Console.WriteLine(i + ". " + Logs[i].GetPassName() + " leaves at " + Logs[i].Time);
-					countPasses++;
-					
-				}
-			}
-			Console.WriteLine("Passes today: " + countPasses);
+			Logs.Display();
 		}
 		
 		public void PrintPasses(GateAction action)
 		{
-			int countPasses = 1;
-			for(int i = 0; i < Logs.Count; i++)
-			{
-				if(Logs[i].Action == action)
-				{
-					if (action == GateAction.Enter)
-					{
-						Console.WriteLine(i + ". " + Logs[i].GetPassName() + " comes inside at " + Logs[i].Time);
-						countPasses++;
-					}
-					else
-					{
-						Console.WriteLine(i + ". " + Logs[i].GetPassName() + " leaves at " + Logs[i].Time);
-						countPasses++;
-					}
-					
-				}
-			}
-			Console.WriteLine("Passes today: " + countPasses);
+			Logs.Display(action);
 		}
 		
 		public void PrintNotAllowedPasses()
