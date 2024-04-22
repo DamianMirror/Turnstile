@@ -1,10 +1,27 @@
-﻿
+﻿using Microsoft.Extensions.DependencyInjection;
+
 namespace ConsoleApp1
 {
     class Program
     {
         public static void Main()
         {
+            // Create a new service collection
+            var serviceCollection = new ServiceCollection();
+
+            // Register your services
+            serviceCollection.AddSingleton<ITurnstile, Turnstile>();
+            // Add more services as needed
+
+            // Build your IoC container
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            // Use your services
+            var turnstile = serviceProvider.GetService<ITurnstile>();
+            // Now you can use your turnstile object
+            
+            
+            /*
             PassInfo pass1 = new PassInfo("John", Status.Customer, PassTypes.Temporary, 2, 5);
             PassInfo pass2 = new PassInfo("Riko", Status.Worker, PassTypes.Permanent, 4);
             PassInfo pass3 = new PassInfo("Masha", Status.Worker, PassTypes.Permanent, 2);
@@ -30,6 +47,8 @@ namespace ConsoleApp1
             
             turnstile1.PrintPasses();
             turnstile1.PrintPasses(GateAction.Enter);
+            turnstile1.PrintPasses(GateAction.Exit);
+            */
         }
     }
 }
