@@ -36,76 +36,58 @@ namespace ConsoleApp1
 		
 		private void LogEntryExit(PassInfo pass, GateAction action)
 		{
-			if(action == GateAction.Enter)
-			{
-				if (pass.Status == Status.Customer)
-				{
-					Console.WriteLine("Customer " + pass.Name + " entered at " + DateTime.Now);
-				}
-				else
-				{
-					Console.WriteLine("Worker " + pass.Name + " entered at " + DateTime.Now);
-				}
-				Logs.Add(new TurnstileLogInfo(pass, action));
-				countTotalPeopleInside++;
-			}
-			else if(action == GateAction.Exit)
-			{
-				if (pass.Status == Status.Customer)
-				{
-					Console.WriteLine("Customer " + pass.Name + " exited at " + DateTime.Now);
-				}
-				else
-				{
-					Console.WriteLine("Worker " + pass.Name + " exited at " + DateTime.Now);
-				}
-				Logs.Add(new TurnstileLogInfo(pass, action));
-				countTotalPeopleInside--;
-			}
-			else
+			// Determine the action type and log the corresponding entry or exit event.
+			string entityType = pass.Status == Status.Customer ? "Customer" : "Worker";
+			string actionType = action == GateAction.Enter ? "entered" : "exited";
+
+			if (action != GateAction.Enter && action != GateAction.Exit)
 			{
 				Console.WriteLine("Invalid action");
+				return;
 			}
+
+			Console.WriteLine($"{entityType} {pass.Name} {actionType} at {DateTime.Now}");
+			Logs.Add(new TurnstileLogInfo(pass, action));
+
+			// Update the count of people inside based on the action.
+			countTotalPeopleInside += action == GateAction.Enter ? 1 : -1;
 		}
 		
 		public void PassThrough(PassInfo pass, GateAction action)
 		{
-			// Check if the pass type is what's needed or if any pass type is accepted
-			if (pass.PassType == GetPassTypeNeeded() || GetPassTypeNeeded() == PassTypes.Any)
-			{
-				// Check security level and pass status for worker
-				if (pass.GetSecurityLevel() >= GetSecurityLevel() && pass.Status == Type)
-				{
-					// Check for temporary pass with passes remaining
-					if(pass.PassType == PassTypes.Temporary && pass.PassesAmountLeft <= 0)
-					{
-						Console.WriteLine("Pass is not allowed: Insufficient passes remaining.");
-						countTotalNotAllowedPasses++;
-					}
-					else
-					{
-						if(pass.PassType == PassTypes.Temporary)
-						{
-							pass.PassesAmountLeft--;
-						}
-						Console.WriteLine("Pass is allowed");
-						LogEntryExit(pass, action);
-					}
-				}
-				else
-				{
-					Console.WriteLine("Pass is not allowed: Security level or status mismatch.");
-					countTotalNotAllowedPasses++;
-				}
-			}
-			else
+			// Validate pass type.
+			if (pass.PassType != GetPassTypeNeeded() && GetPassTypeNeeded() != PassTypes.Any)
 			{
 				Console.WriteLine("Pass is not allowed: Wrong pass type.");
 				countTotalNotAllowedPasses++;
+				return;
 			}
+
+			// Check security level and pass status.
+			if (pass.GetSecurityLevel() < GetSecurityLevel() || pass.Status != Type)
+			{
+				Console.WriteLine("Pass is not allowed: Security level or status mismatch.");
+				countTotalNotAllowedPasses++;
+				return;
+			}
+
+			// Check for passes remaining if the pass is temporary.
+			if (pass.PassType == PassTypes.Temporary)
+			{
+				if (pass.PassesAmountLeft <= 0)
+				{
+					Console.WriteLine("Pass is not allowed: Insufficient passes remaining.");
+					countTotalNotAllowedPasses++;
+					return;
+				}
+
+				pass.PassesAmountLeft--;
+			}
+
+			Console.WriteLine("Pass is allowed");
+			LogEntryExit(pass, action);
 		}
 		
-
 		public void PrintPasses()
 		{
 			Logs.Display();
