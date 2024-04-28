@@ -33,6 +33,11 @@ namespace lab32
 			return PassTypeNeeded;
 		}
 		
+		public DoublyLinkedList GetLogs()
+		{
+			return Logs;
+		}
+		
 		private void LogEntryExit(PassInfo pass, GateAction action)
 		{
 			// Determine the action type and log the corresponding entry or exit event.

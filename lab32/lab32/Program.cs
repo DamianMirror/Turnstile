@@ -9,9 +9,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<ITurnstile>(serviceProvider => new Turnstile(Status.Worker, PassTypes.Permanent, 1));
+
+
 var app = builder.Build();
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -26,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//builder.Services.AddSingleton<ITurnstile, Turnstile>();
+
 
 app.Run();

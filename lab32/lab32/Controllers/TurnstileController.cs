@@ -28,9 +28,8 @@ public class TurnstileController : ControllerBase
     }
 
     [HttpGet("display-passes")]
-    public IActionResult DisplayPasses()
+    public DoublyLinkedList DisplayPasses()
     {
-        _turnstile.PrintPasses();
-        return Ok();
+        return _turnstile.GetLogs();
     }
 }
