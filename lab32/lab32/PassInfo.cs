@@ -25,4 +25,9 @@ public class PassInfo
         return SecurityLevel;
     }
     
+    public int GetIDNums()
+    {
+        return IdNums;
+    }
+    
 }

@@ -9,8 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ITurnstile>(serviceProvider => new Turnstile(Status.Worker, PassTypes.Permanent, 1));
-
+//builder.Services.AddSingleton<ITurnstile>(new Turnstile(Status.Worker, PassTypes.Permanent, 1));
+builder.Services.AddSingleton<ITurnstile>(new Turnstile(Status.Worker, PassTypes.Permanent, 1));
 
 var app = builder.Build();
 

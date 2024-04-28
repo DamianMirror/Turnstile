@@ -1,4 +1,6 @@
 ﻿// TurnstileController.cs
+
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using lab32;
 
@@ -6,30 +8,25 @@ using lab32;
 [Route("[controller]")]
 public class TurnstileController : ControllerBase
 {
+    
     private ITurnstile _turnstile;
 
     public TurnstileController(ITurnstile turnstile)
     {
         _turnstile = turnstile;
     }
-
-    [HttpPost("create")]
-    public IActionResult CreateTurnstile(Status type, PassTypes passTypeNeeded, int securityLevel = 1)
-    {
-        _turnstile = new Turnstile(type, passTypeNeeded, securityLevel);
-        return Ok();
-    }
-
+    
     [HttpPut("pass-through")]
-    public IActionResult PassThrough(PassInfo pass, GateAction action)
+    public IActionResult PassThrough(int IdNums, GateAction action)
     {
-        _turnstile.PassThrough(pass, action);
+        _turnstile.PassThrough(UsersBase.Users[IdNums], action);
         return Ok();
     }
 
     [HttpGet("display-passes")]
-    public DoublyLinkedList DisplayPasses()
+    public IActionResult DisplayPasses()
     {
-        return _turnstile.GetLogs();
+        _turnstile.PrintPasses();
+        return Ok();
     }
 }

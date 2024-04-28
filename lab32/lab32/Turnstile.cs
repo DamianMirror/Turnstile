@@ -33,6 +33,11 @@ namespace lab32
 			return PassTypeNeeded;
 		}
 		
+		public Status GetStatus()
+		{
+			return Type;
+		}
+		
 		public DoublyLinkedList GetLogs()
 		{
 			return Logs;
@@ -62,7 +67,7 @@ namespace lab32
 			// Validate pass type.
 			if (pass.PassType != GetPassTypeNeeded() && GetPassTypeNeeded() != PassTypes.Any)
 			{
-				Console.WriteLine("Pass is not allowed: Wrong pass type.");
+				Console.WriteLine($"Pass is not allowed for {pass.Name}: Wrong pass type.");
 				countTotalNotAllowedPasses++;
 				return;
 			}
@@ -70,7 +75,7 @@ namespace lab32
 			// Check security level and pass status.
 			if (pass.GetSecurityLevel() < GetSecurityLevel() || pass.Status != Type)
 			{
-				Console.WriteLine("Pass is not allowed: Security level or status mismatch.");
+				Console.WriteLine($"Pass is not allowed for {pass.Name}: Security level or status mismatch.");
 				countTotalNotAllowedPasses++;
 				return;
 			}
@@ -80,7 +85,7 @@ namespace lab32
 			{
 				if (pass.PassesAmountLeft <= 0)
 				{
-					Console.WriteLine("Pass is not allowed: Insufficient passes remaining.");
+					Console.WriteLine($"Pass is not allowed for {pass.Name}: Insufficient passes remaining.");
 					countTotalNotAllowedPasses++;
 					return;
 				}

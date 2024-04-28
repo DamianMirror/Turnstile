@@ -1,23 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Numerics;
+using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
-namespace lab32.Controllers;
+namespace lab32;
 
 [ApiController]
 [Route("[controller]")]
 public class PassInfoController : ControllerBase
 {
-
-    private readonly ILogger<PassInfoController> _logger;
-
-    public PassInfoController(ILogger<PassInfoController> logger)
-    {
-        _logger = logger;
-    }
-
     [HttpPost("create-pass")]
     public IActionResult CreatePass(string name, Status status, PassTypes passType, int securityLevel = 1, int passesAmountLeft = 0)
     {
         PassInfo pass = new PassInfo(name, status, passType, securityLevel, passesAmountLeft);
+        UsersBase.Users.Add(pass);
         return Ok();
     }
 }
