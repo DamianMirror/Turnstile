@@ -9,19 +9,7 @@ namespace ConsoleApp1
         public static void Main()
         {
             
-            var services = new ServiceCollection();
-            services.AddSingleton<ITurnstile, Turnstile>();
-
-            // Створення сервіс-провайдера
-            var serviceProvider = services.BuildServiceProvider();
-
-            // Використання залежностей
-            var turnstile1 = serviceProvider.GetRequiredService<ITurnstile>();
-            var turnstile2 = serviceProvider.GetRequiredService<ITurnstile>();
             
-            //задання параметрів для кожного турнікету
-
-            /*
             PassInfo pass1 = new PassInfo("John", Status.Customer, PassTypes.Temporary, 2, 5);
             PassInfo pass2 = new PassInfo("Riko", Status.Worker, PassTypes.Permanent, 4);
             PassInfo pass3 = new PassInfo("Masha", Status.Worker, PassTypes.Permanent, 2);
@@ -48,7 +36,7 @@ namespace ConsoleApp1
             turnstile1.PrintPasses();
             turnstile1.PrintPasses(GateAction.Enter);
             turnstile1.PrintPasses(GateAction.Exit);
-            */
+            
         }
     }
 }
