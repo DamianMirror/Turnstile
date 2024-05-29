@@ -1559,11 +1559,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\OOP\\Turnstile\\lab4\\lab5.Tests\\lab5.Tests.csproj",
+      "projectUniqueName": "D:\\code\\OOP\\Turnstile\\lab5\\lab5.Tests\\lab5.Tests.csproj",
       "projectName": "lab5.Tests",
-      "projectPath": "D:\\code\\OOP\\Turnstile\\lab4\\lab5.Tests\\lab5.Tests.csproj",
+      "projectPath": "D:\\code\\OOP\\Turnstile\\lab5\\lab5.Tests\\lab5.Tests.csproj",
       "packagesPath": "C:\\Users\\demat\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\OOP\\Turnstile\\lab4\\lab5.Tests\\obj\\",
+      "outputPath": "D:\\code\\OOP\\Turnstile\\lab5\\lab5.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\demat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1580,8 +1580,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\code\\OOP\\Turnstile\\lab4\\lab5\\lab5.csproj": {
-              "projectPath": "D:\\code\\OOP\\Turnstile\\lab4\\lab5\\lab5.csproj"
+            "D:\\code\\OOP\\Turnstile\\lab5\\lab5\\lab5.csproj": {
+              "projectPath": "D:\\code\\OOP\\Turnstile\\lab5\\lab5\\lab5.csproj"
             }
           }
         }

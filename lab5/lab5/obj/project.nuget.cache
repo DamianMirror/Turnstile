@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S09uP9hfPMv+zuovX2RkIAQIRBGevPiIjc2kdrSIU354HTX0WRa1wxxfW/CvCYhB8eKFM2PA67T8o3mW1Xs/2g==",
+  "dgSpecHash": "DKMl3byq1G3/N8pg2Jm3deSGbYb187KEY82mfc7nrDFtDE/azxmrVntcCozjAxBMtgwLmJcmPcEbrUKZ4DYeDw==",
   "success": true,
-  "projectFilePath": "D:\\code\\OOP\\Turnstile\\lab4\\lab5\\lab5.csproj",
+  "projectFilePath": "D:\\code\\OOP\\Turnstile\\lab5\\lab5\\lab5.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\demat\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
     "C:\\Users\\demat\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

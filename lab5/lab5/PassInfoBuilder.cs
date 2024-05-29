@@ -1,7 +1,9 @@
 namespace lab32
 {
-    public class PassInfoBuilder
+    public class PassInfoBuilder : IPassInfoBuilder
     {
+        
+        
         private string _name;
         private Status _status;
         private PassTypes _passType;
@@ -44,7 +46,13 @@ namespace lab32
 
         public PassInfo Build()
         {
-            return new PassInfo(_name, _status, _passType, _securityLevel, _passesAmountLeft);
+            PassInfo pass = new PassInfo();
+            pass.Name = _name;
+            pass.Status = _status;
+            pass.PassType = _passType;
+            pass.PassesAmountLeft = _passesAmountLeft;
+            pass.SetSecurityLevel(_securityLevel);
+            return pass;
         }
     }
 }

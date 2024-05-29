@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zRPzfkvm5wHsBdQwpV2rB1D10giS95c4UYUfdXs5R/7FPLK88yKBfIKaEHrt1Gjv0LiXsSgn+sQFMLEJQ0H4OQ==",
+  "dgSpecHash": "xLnp1YnrM+NjtjsXbApxJYF87l0h/Th4HlM7hQM+inGwB7AiGlH4K0eDmD39Qa76Ricn38uVjoBkLYxpNsz7lg==",
   "success": true,
-  "projectFilePath": "D:\\code\\OOP\\Turnstile\\lab4\\lab5.Tests\\lab5.Tests.csproj",
+  "projectFilePath": "D:\\code\\OOP\\Turnstile\\lab5\\lab5.Tests\\lab5.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\demat\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\demat\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
