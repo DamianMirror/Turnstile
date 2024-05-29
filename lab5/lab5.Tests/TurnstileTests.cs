@@ -19,22 +19,23 @@ namespace lab32.Tests
             _turnstile = new Turnstile(Status.Worker, PassTypes.Permanent, 1);
 
             // Initialize valid pass
-            _validPass = new PassInfo
-            (
-                "John Doe",
-                Status.Worker,
-                PassTypes.Permanent,
-                3
-            );
+            
+            var passBuilder = new PassInfoBuilder();
+            _validPass = passBuilder
+                .SetName("John Doe")
+                .SetStatus(Status.Worker)
+                .SetPassType(PassTypes.Permanent)
+                .SetSecurityLevel(3)
+                .Build();
 
             // Initialize invalid pass
-            _invalidPass = new PassInfo
-            (
-                "Jane Doe",
-                Status.Customer,
-                PassTypes.Temporary,
-                0
-            );
+            _invalidPass = passBuilder
+                .SetName("Jane Doe")
+                .SetStatus(Status.Customer)
+                .SetPassType(PassTypes.Temporary)
+                .SetSecurityLevel(0)
+                .Build();
+            
 
             // Set up StringWriter for capturing console output
             _stringWriter = new StringWriter();

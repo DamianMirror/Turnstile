@@ -7,7 +7,7 @@ namespace lab32
         private string _name;
         private Status _status;
         private PassTypes _passType;
-        private int _securityLevel = 1;
+        private int _securityLevel = 0;
         private int _passesAmountLeft = 0;
 
         public PassInfoBuilder SetName(string name)

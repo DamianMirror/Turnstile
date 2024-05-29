@@ -15,8 +15,21 @@ namespace lab32.Tests
         public void SetUp()
         {
             _list = new DoublyLinkedList();
-            var pass1 = new PassInfo("John Doe", Status.Customer, PassTypes.Temporary, 5);
-            var pass2 = new PassInfo("Jane Smith", Status.Worker, PassTypes.Permanent, 5);
+            var passBuilder = new PassInfoBuilder();
+            var pass1 = passBuilder
+                .SetName("John Doe")
+                .SetStatus(Status.Customer)
+                .SetPassType(PassTypes.Temporary)
+                .SetSecurityLevel(5)
+                .Build();
+            
+            var pass2 = passBuilder
+                .SetName("Jane Smith")
+                .SetStatus(Status.Worker)
+                .SetPassType(PassTypes.Permanent)
+                .SetSecurityLevel(5)
+                .Build();
+
 
             _logInfo1 = new TurnstileLogInfo(pass1, GateAction.Enter);
             _logInfo2 = new TurnstileLogInfo(pass2, GateAction.Exit);
